@@ -42,7 +42,7 @@ uint8_t RAM_read(Memory *mem, uint16_t addr) {
 	return mem->RAM[addr];
 }
 
-void VIDEO_write(Memory *mem, uint16_t addr, uint8_t b) {
+void VIDEO_write(Memory *mem, uint16_t addr, uint32_t b) {
 	if(addr > VIDEO_SIZE) {
 		printf("Cant write to video ram");
 		exit(1);
@@ -50,7 +50,7 @@ void VIDEO_write(Memory *mem, uint16_t addr, uint8_t b) {
 	mem->VIDEO[addr] = b;
 }
 
-uint8_t VIDEO_read(Memory *mem, uint16_t addr) {
+uint32_t VIDEO_read(Memory *mem, uint16_t addr) {
 	if(addr > VIDEO_SIZE) {
 		printf("Cant read from video ram");
 		exit(1);

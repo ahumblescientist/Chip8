@@ -16,9 +16,13 @@ typedef struct {
 	uint8_t sp;
 	uint16_t stack[16];
 	uint16_t opcode;
-	Memory *mem;
+	Memory mem;
+	uint8_t keys[16];
 } CPU;
 
-void initCPU();
+void CPU_init(char *ROM, size_t);
+uint32_t *videoMem();
+uint8_t *getkeys();
+void cycle();
 
 #endif
