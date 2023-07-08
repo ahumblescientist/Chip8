@@ -17,7 +17,7 @@ int init() {
 		printf("Failed to inti SDL2: %s", SDL_GetError());
 		return 1;
 	}
-	window = SDL_CreateWindow("Chip-8", 0, 0, WIDTH, HEIGHT, SDL_WINDOW_SHOWN);
+	window = SDL_CreateWindow("Chip-8", 0, 0, WIDTH, HEIGHT, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
 	if(window == NULL) {
 		printf("Failed to create SDL2 window: %s", SDL_GetError());
 		return 1;
@@ -184,9 +184,13 @@ int main(int argc, char **argv) {
 	CPU_init(ROM, filesize);
 	int quit = 0;
 	while(!quit) {
+		uint64_t start = SDL_GetPerformanceCounter();
 		cycle();
 		proccess();
 		quit = input(getkeys());
+		uint64_t end = SDL_GetPerformanceCounter();
+		float seconds = (end - start) / (float)(SDL_GetPerformanceFrequency()) * 1000.0f;
+		SDL_Delay(floor(8.3333f - seconds));
 	}
 	destroy();
 	return 0;
