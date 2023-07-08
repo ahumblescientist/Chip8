@@ -1,6 +1,6 @@
 # [CHIP-8](https://en.wikipedia.org/wiki/CHIP-8) Emulator
 
-![picture](chip1.gif)
+![picture](chip1.png)
 
 ## Compiling / Running
 
